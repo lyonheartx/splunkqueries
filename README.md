@@ -297,3 +297,18 @@ index="main" sourcetype="WinEventLog:Sysmon" EventCode=1 (Image="*cmd.exe" OR Im
 ```
 event.code:13 AND registry.path:*Run* AND process.name:"powershell.exe"
 ```
+<br />
+
+## Check Destination IP of a Network Connection by process/app
+
+```
+index="main" sourcetype="WinEventLog:Sysmon" EventCode=3 Image="*notepad.exe" 
+| stats values(DestinationIp) as destination_ips
+```
+<br />
+
+## DNS Queries Requesting Malicious Payloads/Tools Hosted On Reputable/Whitelisted Domains
+
+```
+index="main" sourcetype="WinEventLog:Sysmon" EventCode=22  QueryName="*github*" | stats count by Image, QueryName
+```
