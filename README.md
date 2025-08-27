@@ -291,3 +291,9 @@ index="main" EventCode=7 ImageLoaded="*clr.dll"
 ```
 index="main" sourcetype="WinEventLog:Sysmon" EventCode=1 (Image="*cmd.exe" OR Image="*pow
 ```
+<br />
+
+## Registry Value Set
+```
+event.code:13 AND registry.path:*Run* AND process.name:"powershell.exe"
+```
