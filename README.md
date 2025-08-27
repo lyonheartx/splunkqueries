@@ -278,3 +278,16 @@ index="your index name here" sourcetype=WinEventLog:Security (EventCode=624 OR E
 | stats count(NewAccount) as creation 
 | gauge creation 1 5 15 25
 ```
+<br />
+
+## C# Injection clr.dll detection
+```
+index="main" EventCode=7 ImageLoaded="*clr.dll" 
+| stats count by Image
+```
+<br />
+
+## Child Process spawning cmd or powershell
+```
+index="main" sourcetype="WinEventLog:Sysmon" EventCode=1 (Image="*cmd.exe" OR Image="*pow
+```
